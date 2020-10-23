@@ -1,0 +1,51 @@
+{
+  "name": "@hkbyte/validator",
+  "version": "0.0.1",
+  "description": "Package for JSON Schema Validations and Parsing",
+  "main": "lib/index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc --watch",
+    "clean": "rimraf lib/",
+    "build": "npm run clean && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hkbyte/npm-validator.git"
+  },
+  "files": [
+    "package.json",
+    "lib/"
+  ],
+  "keywords": [
+    "validation",
+    "parsing",
+    "json",
+    "validator",
+    "parser",
+    "json-validation",
+    "hk",
+    "hkbyte",
+    "hkllp"
+  ],
+  "author": "Harshit Kunal LLP",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hkbyte/npm-validator/issues"
+  },
+  "homepage": "https://github.com/hkbyte/npm-validator#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "12",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.162",
+    "@types/validator": "^13.1.0",
+    "lodash": "^4.17.20",
+    "validator": "^13.1.17"
+  }
+}
