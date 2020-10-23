@@ -96,11 +96,11 @@ export class TypeObject extends TypeBase<NonNullable<ParsedType>> {
             }
 
             if (!this.preValidations.nonStrict) {
-                for (let key in Object.keys(payload)) {
+                Object.keys(payload).forEach((key) => {
                     if (!_.hasIn(this.schema, key)) {
                         throw new Error(`${key}: is not allowed`)
                     }
-                }
+                })
             }
 
             for (const el of Object.entries(this.schema)) {
