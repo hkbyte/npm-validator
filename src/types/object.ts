@@ -12,6 +12,7 @@ type PreValidations = {
     nullable?: boolean
     optional?: boolean
     nonEmpty?: boolean
+    nonStrict?: boolean
 }
 
 type Validations = {}
@@ -47,6 +48,11 @@ export class TypeObject extends TypeBase<NonNullable<ParsedType>> {
         return this
     }
 
+    nonStrict() {
+        this.preValidations.nonStrict = true
+        return this
+    }
+
     optional() {
         this.preValidations.optional = true
         return this
@@ -60,7 +66,7 @@ export class TypeObject extends TypeBase<NonNullable<ParsedType>> {
     async parse(payload: unknown): Promise<ParsedType> {
         try {
             let parsedObject: ParsedType = {}
-            // let parsedObject: <typeof > = {}
+
             if (!_.isObject(payload)) {
                 if (_.isUndefined(payload)) {
                     if (this.preValidations.optional) {
@@ -86,6 +92,14 @@ export class TypeObject extends TypeBase<NonNullable<ParsedType>> {
                         return this.postValidations.default
                     }
                     throw new Error('empty not allowed')
+                }
+            }
+
+            if (!this.preValidations.nonStrict) {
+                for (let key in Object.keys(payload)) {
+                    if (!_.hasIn(this.schema, key)) {
+                        throw new Error(`${key}: is not allowed`)
+                    }
                 }
             }
 
