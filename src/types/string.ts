@@ -106,7 +106,7 @@ export type MobilePhoneLocaleType =
     | 'zh-MO'
     | 'zh-TW'
 
-export type PostalCodeType =
+export type PostalCodeLocaleType =
     | 'AD'
     | 'AT'
     | 'AU'
@@ -190,7 +190,7 @@ type Validations = {
     mongoObjectId?: boolean
     port?: boolean
     postalCode?: boolean
-    postalCodeLocale?: PostalCodeType
+    postalCodeLocale?: PostalCodeLocaleType
     semVer?: boolean
     url?: boolean
     pattern?: RegExp
@@ -284,7 +284,7 @@ export class TypeString extends TypeBase<NonNullable<ParsedType>> {
         return this
     }
 
-    postalCode(locale?: PostalCodeType) {
+    postalCode(locale?: PostalCodeLocaleType) {
         this.validations.postalCode = true
         if (!_.isEmpty(locale)) {
             this.validations.postalCodeLocale = locale

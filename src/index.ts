@@ -26,3 +26,16 @@ export class T {
         return new TypeObject(schema)
     }
 }
+
+export {
+    TypeAny,
+    TypeArray,
+    TypeBase,
+    TypeBoolean,
+    TypeNumber,
+    TypeObject,
+    TypeObjectSchema,
+}
+
+export { MobilePhoneLocaleType, PostalCodeLocaleType } from './types/string'
+export { ParsingError, PathErrorObject } from './errors'
