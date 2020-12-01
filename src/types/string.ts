@@ -462,12 +462,12 @@ export class TypeString extends TypeBase<NonNullable<ParsedType>> {
             }
             if (this.validations.date) {
                 if (this.validations.isoDate) {
-                    if (!validator.isISO8601(value)) {
+                    if (!validator.isISO8601(value, { strict: false })) {
                         throw new Error('invalid ISO8601 date format')
                     }
                 }
                 //@ts-ignore
-                if (!validator.isDate(value)) {
+                else if (!validator.isDate(value)) {
                     throw new Error('invalid date')
                 }
             }
